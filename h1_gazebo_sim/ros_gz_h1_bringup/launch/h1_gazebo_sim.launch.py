@@ -2,6 +2,7 @@ import os
 import sys
 
 from ament_index_python.packages import get_package_share_directory
+from launch.actions import SetEnvironmentVariable
 
 from launch import LaunchDescription
 from launch.actions import DeclareLaunchArgument
@@ -16,21 +17,15 @@ from launch_ros.actions import Node
 def generate_launch_description():
     # Configure ROS nodes for launch
 
-    # handle launch arguments:
-    use_force_ctrl = False
-    for arg in sys.argv:
-        if arg.startswith("use_force_ctrl:="):
-            use_force_ctrl = arg.split(":=")[1] == "True"
-            break
-    
+  
     # Setup project paths
-    pkg_project_bringup = get_package_share_directory('ros_gz_a1_bringup')
-    pkg_project_gazebo = get_package_share_directory('ros_gz_a1_gazebo')
-    pkg_project_description = get_package_share_directory('ros_gz_a1_description')
+    pkg_project_bringup = get_package_share_directory('ros_gz_h1_bringup')
+    pkg_project_gazebo = get_package_share_directory('ros_gz_h1_gazebo')
+    pkg_project_description = get_package_share_directory('ros_gz_h1_description')
     pkg_ros_gz_sim = get_package_share_directory('ros_gz_sim')
 
     # Load the SDF file from "description" package                    
-    sdf_file  =  os.path.join(pkg_project_description, 'models', 'a1_ign', 'model.sdf')
+    sdf_file  =  os.path.join(pkg_project_description, 'models', 'h1_ign', 'model.sdf')
     with open(sdf_file, 'r') as infp:
         robot_desc = infp.read()
 
@@ -41,9 +36,12 @@ def generate_launch_description():
         launch_arguments={'gz_args': PathJoinSubstitution([
             pkg_project_gazebo,
             'worlds',
-            'empty_a1_force_ctrl.sdf' if use_force_ctrl else 'empty_a1.sdf'
+            'empty_h1.sdf'
         ])}.items(),
     )
+
+    set_gpu_env = SetEnvironmentVariable(name='__NV_PRIME_RENDER_OFFLOAD', value='1')
+    set_glx_env = SetEnvironmentVariable(name='__GLX_VENDOR_LIBRARY_NAME', value='nvidia')
 
     # Takes the description and joint angles as inputs and publishes the 3D poses of the robot links
     robot_state_publisher = Node(
@@ -62,13 +60,15 @@ def generate_launch_description():
         package='ros_gz_bridge',
         executable='parameter_bridge',
         parameters=[{
-            'config_file': os.path.join(pkg_project_bringup, 'config', 'ros_gz_a1_bridge_force_ctrl.yaml' if use_force_ctrl else 'ros_gz_a1_bridge.yaml'),
+            'config_file': os.path.join(pkg_project_bringup, 'config', 'ros_gz_h1_bridge.yaml'),
             'qos_overrides./tf_static.publisher.durability': 'transient_local',
         }],
         output='screen'
     )
 
     return LaunchDescription([
+        set_gpu_env,
+        set_glx_env,
         gz_sim,
         DeclareLaunchArgument('rviz', default_value='true',
                               description='Open RViz (not).'), 

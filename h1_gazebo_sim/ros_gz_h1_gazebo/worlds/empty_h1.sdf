@@ -3,6 +3,12 @@
 <sdf version="1.8">
   <world name="demo">
     
+    <physics name="default_physics" type="ode">
+      <max_step_size>0.005</max_step_size>             <!-- Increase from 0.001 for faster sim -->
+      <real_time_factor>1.0</real_time_factor>         <!-- Target RTF -->
+      <real_time_update_rate>200</real_time_update_rate> <!-- Lower this to reduce CPU -->
+      <gravity>0 0 -9.8</gravity>
+    </physics>
     <plugin
       filename="ignition-gazebo-physics-system"
       name="ignition::gazebo::systems::Physics">
@@ -74,11 +80,11 @@
       </link>
     </model>
 
-    <model name="a1_ign">
+    <model name="h1_ign">
       <self_collide>true</self_collide>
-      <pose>0 0 0.5 0 0 0</pose>
+      <pose>0 0 1 0 0 0</pose>
       <include merge="true">
-        <uri>package://ros_gz_a1_description/models/a1_ign</uri>
+        <uri>package://ros_gz_h1_description/models/h1_ign</uri>
       </include>
 
       <plugin
@@ -95,193 +101,6 @@
         <static_update_frequency>1</static_update_frequency>
       </plugin>
 
-      <!-- Front Left Leg Controller Gazebo Sim Topic-->
-      <plugin
-        filename="ignition-gazebo-joint-position-controller-system"
-        name="gz::sim::systems::JointPositionController">
-        <joint_name>FL_hip_joint</joint_name>
-        <topic>FL_hip_cmd</topic>
-        <p_gain>100</p_gain>
-        <i_gain>0</i_gain>
-        <d_gain>5</d_gain>
-        <i_max>35</i_max>
-        <i_min>-35</i_min>
-        <cmd_max>21</cmd_max>
-        <cmd_min>-21</cmd_min>
-        <initial_position>0.0</initial_position>
-      </plugin>
-
-      <plugin
-        filename="ignition-gazebo-joint-position-controller-system"
-        name="gz::sim::systems::JointPositionController">
-        <joint_name>FL_thigh_joint</joint_name>
-        <topic>FL_thigh_cmd</topic>
-        <p_gain>300</p_gain>
-        <i_gain>0</i_gain>
-        <d_gain>8</d_gain>
-        <i_max>35</i_max>
-        <i_min>-35</i_min>
-        <cmd_max>21</cmd_max>
-        <cmd_min>-21</cmd_min>
-        <initial_position>1.0</initial_position>
-      </plugin>
-
-      <plugin
-        filename="ignition-gazebo-joint-position-controller-system"
-        name="gz::sim::systems::JointPositionController">
-        <joint_name>FL_calf_joint</joint_name>
-        <topic>FL_calf_cmd</topic>
-        <p_gain>300</p_gain>
-        <i_gain>0</i_gain>
-        <d_gain>8</d_gain>
-        <i_max>35</i_max>
-        <i_min>-35</i_min>
-        <cmd_max>21</cmd_max>
-        <cmd_min>-21</cmd_min>
-        <initial_position>-2.0</initial_position>
-      </plugin>
-
-
-      <!-- Front Right Leg Controller Gazebo Sim Topic-->
-      <plugin
-        filename="ignition-gazebo-joint-position-controller-system"
-        name="gz::sim::systems::JointPositionController">
-        <joint_name>FR_hip_joint</joint_name>
-        <topic>FR_hip_cmd</topic>
-        <p_gain>100</p_gain>
-        <i_gain>0</i_gain>
-        <d_gain>5</d_gain>
-        <i_max>35</i_max>
-        <i_min>-35</i_min>
-        <cmd_max>21</cmd_max>
-        <cmd_min>-21</cmd_min>
-        <initial_position>0.0</initial_position>
-      </plugin>
-
-      <plugin
-        filename="ignition-gazebo-joint-position-controller-system"
-        name="gz::sim::systems::JointPositionController">
-        <joint_name>FR_thigh_joint</joint_name>
-        <topic>FR_thigh_cmd</topic>
-        <p_gain>300</p_gain>
-        <i_gain>0</i_gain>
-        <d_gain>8</d_gain>
-        <i_max>35</i_max>
-        <i_min>-35</i_min>
-        <cmd_max>21</cmd_max>
-        <cmd_min>-21</cmd_min>
-        <initial_position>1.0</initial_position>
-      </plugin>
-
-      <plugin
-        filename="ignition-gazebo-joint-position-controller-system"
-        name="gz::sim::systems::JointPositionController">
-        <joint_name>FR_calf_joint</joint_name>
-        <topic>FR_calf_cmd</topic>
-        <p_gain>300</p_gain>
-        <i_gain>0</i_gain>
-        <d_gain>8</d_gain>
-        <i_max>35</i_max>
-        <i_min>-35</i_min>
-        <cmd_max>21</cmd_max>
-        <cmd_min>-21</cmd_min>
-        <initial_position>-2.0</initial_position>
-      </plugin>
-
-
-      <!-- Rear Left Leg Controller Gazebo Sim Topic-->
-      <plugin
-        filename="ignition-gazebo-joint-position-controller-system"
-        name="gz::sim::systems::JointPositionController">
-        <joint_name>RL_hip_joint</joint_name>
-        <topic>RL_hip_cmd</topic>
-        <p_gain>100</p_gain>
-        <i_gain>0</i_gain>
-        <d_gain>5</d_gain>
-        <i_max>35</i_max>
-        <i_min>-35</i_min>
-        <cmd_max>21</cmd_max>
-        <cmd_min>-21</cmd_min>
-        <initial_position>0.0</initial_position>
-      </plugin>
-
-      <plugin
-        filename="ignition-gazebo-joint-position-controller-system"
-        name="gz::sim::systems::JointPositionController">
-        <joint_name>RL_thigh_joint</joint_name>
-        <topic>RL_thigh_cmd</topic>
-        <p_gain>300</p_gain>
-        <i_gain>0</i_gain>
-        <d_gain>8</d_gain>
-        <i_max>35</i_max>
-        <i_min>-35</i_min>
-        <cmd_max>21</cmd_max>
-        <cmd_min>-21</cmd_min>
-        <initial_position>1.0</initial_position>
-      </plugin>
-
-      <plugin
-        filename="ignition-gazebo-joint-position-controller-system"
-        name="gz::sim::systems::JointPositionController">
-        <joint_name>RL_calf_joint</joint_name>
-        <topic>RL_calf_cmd</topic>
-        <p_gain>300</p_gain>
-        <i_gain>0</i_gain>
-        <d_gain>8</d_gain>
-        <i_max>35</i_max>
-        <i_min>-35</i_min>
-        <cmd_max>21</cmd_max>
-        <cmd_min>-21</cmd_min>
-        <initial_position>-2.0</initial_position>
-      </plugin>
-
-
-    <!-- Rear Right Leg Controller Gazebo Sim Topic-->
-      <plugin
-        filename="ignition-gazebo-joint-position-controller-system"
-        name="gz::sim::systems::JointPositionController">
-        <joint_name>RR_hip_joint</joint_name>
-        <topic>RR_hip_cmd</topic>
-        <p_gain>100</p_gain>
-        <i_gain>0</i_gain>
-        <d_gain>5</d_gain>
-        <i_max>35</i_max>
-        <i_min>-35</i_min>
-        <cmd_max>21</cmd_max>
-        <cmd_min>-21</cmd_min>
-        <initial_position>0.0</initial_position>
-      </plugin>
-
-      <plugin
-        filename="ignition-gazebo-joint-position-controller-system"
-        name="gz::sim::systems::JointPositionController">
-        <joint_name>RR_thigh_joint</joint_name>
-        <topic>RR_thigh_cmd</topic>
-        <p_gain>300</p_gain>
-        <i_gain>0</i_gain>
-        <d_gain>8</d_gain>
-        <i_max>35</i_max>
-        <i_min>-35</i_min>
-        <cmd_max>21</cmd_max>
-        <cmd_min>-21</cmd_min>
-        <initial_position>1.0</initial_position>
-      </plugin>
-
-      <plugin
-        filename="ignition-gazebo-joint-position-controller-system"
-        name="gz::sim::systems::JointPositionController">
-        <joint_name>RR_calf_joint</joint_name>
-        <topic>RR_calf_cmd</topic>
-        <p_gain>300</p_gain>
-        <i_gain>0</i_gain>
-        <d_gain>8</d_gain>
-        <i_max>35</i_max>
-        <i_min>-35</i_min>
-        <cmd_max>21</cmd_max>
-        <cmd_min>-21</cmd_min>
-        <initial_position>-2.0</initial_position>
-      </plugin>
-
        <!-- plugin for odometry -->
       <plugin
         name="ignition::gazebo::systems::OdometryPublisher"
@@ -290,7 +109,7 @@
       <odom_frame>odom</odom_frame>       
       <child_frame>base</child_frame> 
 
-      <publish_rate>50</publish_rate>     <!-- Defaults to 20 Hz -->
+      <publish_rate>20</publish_rate>
       <enable_twist>true</enable_twist>
       <enable_pose>true</enable_pose>
       </plugin>
