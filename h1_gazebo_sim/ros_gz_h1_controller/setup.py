@@ -19,6 +19,8 @@ setup(
     license='Apache-2.0',
     tests_require=['pytest'],
     entry_points={
-        'console_scripts': [        ],
+        'console_scripts': [    
+            'low_level_controller = ros_gz_h1_controller.low_level_controller:main',
+            ],
     },
 )

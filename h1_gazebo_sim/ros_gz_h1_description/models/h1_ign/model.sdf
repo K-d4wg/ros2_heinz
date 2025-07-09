@@ -857,16 +857,15 @@
           <izz>0.00061773299999999998</izz>
         </inertia>
       </inertial>
-      <!--
       <collision name='left_shoulder_roll_link_collision'>
         <pose>0 0 0 0 0 0</pose>
         <geometry>
-          <box>
-            <size>0.05 0.05 0.25</size>
-          </box>
+          <mesh>
+            <scale>1 1 1</scale>
+            <uri>meshes/left_shoulder_roll_link.STL</uri>
+          </mesh>
         </geometry>
       </collision>
-      -->
       <visual name='left_shoulder_roll_link_visual'>
         <pose>0 0 0 0 0 0</pose>
         <geometry>
@@ -967,7 +966,6 @@
           <izz>0.00089789899999999996</izz>
         </inertia>
       </inertial>
-      <!--
       <collision name='left_elbow_link_collision'>
         <pose>0 0 0 0 0 0</pose>
         <geometry>
@@ -976,7 +974,6 @@
           </box>
         </geometry>
       </collision>
-      -->
       <visual name='left_elbow_link_visual'>
         <pose>0 0 0 0 0 0</pose>
         <geometry>
@@ -991,7 +988,7 @@
         </material>
       </visual>
     </link>
-    <joint name='left_wrist_roll_joint' type='revolute'>
+    <joint name='left_wrist_roll_joint' type='fixed'>
       <pose relative_to='left_elbow_link'>0.121 -0.032899999999999999 -0.010999999999999999 0 0 0</pose>
       <parent>left_elbow_link</parent>
       <child>left_wrist_roll_link</child>
@@ -1045,7 +1042,7 @@
         </material>
       </visual>
     </link>
-    <joint name='left_wrist_pitch_joint' type='revolute'>
+    <joint name='left_wrist_pitch_joint' type='fixed'>
       <pose relative_to='left_wrist_roll_link'>0.086999999999999994 0 0 0 0 0</pose>
       <parent>left_wrist_roll_link</parent>
       <child>left_wrist_pitch_link</child>
@@ -1077,7 +1074,6 @@
           <izz>7.0702000000000002e-05</izz>
         </inertia>
       </inertial>
-      <!--
       <collision name='left_wrist_pitch_link_collision'>
         <pose>0 0 0 0 0 0</pose>
         <geometry>
@@ -1086,7 +1082,6 @@
           </box>
         </geometry>
       </collision>
-      -->
       <visual name='left_wrist_pitch_link_visual'>
         <pose>0 0 0 0 0 0</pose>
         <geometry>
@@ -1101,7 +1096,7 @@
         </material>
       </visual>
     </link>
-    <joint name='left_wrist_yaw_joint' type='revolute'>
+    <joint name='left_wrist_yaw_joint' type='fixed'>
       <pose relative_to='left_wrist_pitch_link'>0.02 0 0 0 0 0</pose>
       <parent>left_wrist_pitch_link</parent>
       <child>left_wrist_yaw_link</child>
@@ -1233,7 +1228,6 @@
           <izz>0.00061773299999999998</izz>
         </inertia>
       </inertial>
-      <!--
       <collision name='right_shoulder_roll_link_collision'>
         <pose>0 0 0 0 0 0</pose>
         <geometry>
@@ -1242,7 +1236,6 @@
           </box>
         </geometry>
       </collision>
-      -->
       <visual name='right_shoulder_roll_link_visual'>
         <pose>0 0 0 0 0 0</pose>
         <geometry>
@@ -1292,9 +1285,10 @@
       <collision name='right_shoulder_yaw_link_collision'>
         <pose>0 0 0 0 0 0</pose>
         <geometry>
-          <box>
-            <size>0.04 0.04 0.20</size>
-          </box>
+          <mesh>
+            <scale>1 1 1</scale>
+            <uri>meshes/right_shoulder_yaw_link.STL</uri>
+          </mesh>
         </geometry>
       </collision>
       <visual name='right_shoulder_yaw_link_visual'>
@@ -1343,7 +1337,6 @@
           <izz>0.00089789899999999996</izz>
         </inertia>
       </inertial>
-      <!--
       <collision name='right_elbow_link_collision'>
         <pose>0 0 0 0 0 0</pose>
         <geometry>
@@ -1352,7 +1345,6 @@
           </box>
         </geometry>
       </collision>
-      -->
       <visual name='right_elbow_link_visual'>
         <pose>0 0 0 0 0 0</pose>
         <geometry>
@@ -1367,7 +1359,7 @@
         </material>
       </visual>
     </link>
-    <joint name='right_wrist_roll_joint' type='revolute'>
+    <joint name='right_wrist_roll_joint' type='fixed'>
       <pose relative_to='right_elbow_link'>0.121 0.032899999999999999 -0.010999999999999999 0 0 0</pose>
       <parent>right_elbow_link</parent>
       <child>right_wrist_roll_link</child>
@@ -1421,7 +1413,7 @@
         </material>
       </visual>
     </link>
-    <joint name='right_wrist_pitch_joint' type='revolute'>
+    <joint name='right_wrist_pitch_joint' type='fixed'>
       <pose relative_to='right_wrist_roll_link'>0.086999999999999994 0 0 0 0 0</pose>
       <parent>right_wrist_roll_link</parent>
       <child>right_wrist_pitch_link</child>
@@ -1453,7 +1445,6 @@
           <izz>7.0702000000000002e-05</izz>
         </inertia>
       </inertial>
-      <!--
       <collision name='right_wrist_pitch_link_collision'>
         <pose>0 0 0 0 0 0</pose>
         <geometry>
@@ -1462,7 +1453,6 @@
           </box>
         </geometry>
       </collision>
-      -->
       <visual name='right_wrist_pitch_link_visual'>
         <pose>0 0 0 0 0 0</pose>
         <geometry>
@@ -1477,7 +1467,7 @@
         </material>
       </visual>
     </link>
-    <joint name='right_wrist_yaw_joint' type='revolute'>
+    <joint name='right_wrist_yaw_joint' type='fixed'>
       <pose relative_to='right_wrist_pitch_link'>0.02 0 0 0 0 0</pose>
       <parent>right_wrist_pitch_link</parent>
       <child>right_wrist_yaw_link</child>

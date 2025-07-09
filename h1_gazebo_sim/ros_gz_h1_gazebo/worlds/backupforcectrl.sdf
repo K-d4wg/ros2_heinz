@@ -1,0 +1,205 @@
+<?xml version="1.0" ?>
+
+<sdf version="1.8">
+  <world name="demo">
+    <plugin name='gz::sim::systems::Physics' filename='gz-sim-physics-system'>
+      <engine>
+        <filename>gz-physics-bullet-featherstone-plugin</filename>
+      </engine>
+    </plugin>
+    
+    <plugin
+      filename="ignition-gazebo-sensors-system"
+      name="ignition::gazebo::systems::Sensors">
+      <render_engine>ogre2</render_engine>
+    </plugin>
+
+    <plugin
+      filename="gz-sim-contact-system"
+      name="gz::sim::systems::Contact">
+    </plugin>
+
+    <plugin
+      filename="ignition-gazebo-scene-broadcaster-system"
+      name="ignition::gazebo::systems::SceneBroadcaster">
+    </plugin>
+    
+    <plugin
+      filename="ignition-gazebo-user-commands-system"
+      name="ignition::gazebo::systems::UserCommands">
+    </plugin>
+
+    <plugin filename="libignition-gazebo-imu-system.so"
+        name="ignition::gazebo::systems::Imu">
+    </plugin>
+    
+    <light name="sun" type="directional">
+      <cast_shadows>true</cast_shadows>
+      <pose>0 0 10 0 0 0</pose>
+      <diffuse>0.8 0.8 0.8 1</diffuse>
+      <specular>0.2 0.2 0.2 1</specular>
+      <attenuation>
+        <range>1000</range>
+        <constant>0.9</constant>
+        <linear>0.01</linear>
+        <quadratic>0.001</quadratic>
+      </attenuation>
+      <direction>-0.5 0.1 -0.9</direction>
+    </light>
+
+    <model name="ground_plane">
+      <static>true</static>
+      <link name="link">
+        <collision name="collision">
+          <geometry>
+            <plane>
+              <normal>0 0 1</normal>
+              <size>100 100</size>
+            </plane>
+          </geometry>
+        </collision>
+        <visual name="visual">
+          <geometry>
+            <plane>
+              <normal>0 0 1</normal>
+              <size>100 100</size>
+            </plane>
+          </geometry>
+          <material>
+            <ambient>0.8 0.8 0.8 1</ambient>
+            <diffuse>0.8 0.8 0.8 1</diffuse>
+            <specular>0.8 0.8 0.8 1</specular>
+          </material>
+        </visual>
+      </link>
+    </model>
+
+
+    <model name="h1_ign">
+      <!--<static>true</static>-->
+      <!--<self_collide>true</self_collide>-->
+      <pose>0 0 1.04 0 0 0</pose>
+      <include merge="true">
+        <uri>package://ros_gz_h1_description/models/h1_ign</uri>
+      </include>
+
+      <plugin
+        filename="ignition-gazebo-joint-state-publisher-system"
+        name="ignition::gazebo::systems::JointStatePublisher">
+      </plugin>
+
+      <plugin
+        filename="ignition-gazebo-pose-publisher-system"
+        name="ignition::gazebo::systems::PosePublisher">
+        <publish_link_pose>true</publish_link_pose>
+        <use_pose_vector_msg>true</use_pose_vector_msg>
+        <static_publisher>true</static_publisher>
+        <static_update_frequency>1</static_update_frequency>
+      </plugin>
+    
+      <!-- Left Leg Force Controllers -->
+      <plugin filename="ignition-gazebo-apply-joint-force-system" name="gz::sim::systems::ApplyJointForce">
+        <joint_name>left_hip_yaw_joint</joint_name>
+      </plugin>
+      <plugin filename="ignition-gazebo-apply-joint-force-system" name="gz::sim::systems::ApplyJointForce">
+        <joint_name>left_hip_pitch_joint</joint_name>
+      </plugin>
+      <plugin filename="ignition-gazebo-apply-joint-force-system" name="gz::sim::systems::ApplyJointForce">
+        <joint_name>left_hip_roll_joint</joint_name>
+      </plugin>
+      <plugin filename="ignition-gazebo-apply-joint-force-system" name="gz::sim::systems::ApplyJointForce">
+        <joint_name>left_knee_joint</joint_name>
+      </plugin>
+      <plugin filename="ignition-gazebo-apply-joint-force-system" name="gz::sim::systems::ApplyJointForce">
+        <joint_name>left_ankle_pitch_joint</joint_name>
+      </plugin>
+      <plugin filename="ignition-gazebo-apply-joint-force-system" name="gz::sim::systems::ApplyJointForce">
+        <joint_name>left_ankle_roll_joint</joint_name>
+      </plugin>
+
+      <!-- Right Leg Force Controllers -->
+      <plugin filename="ignition-gazebo-apply-joint-force-system" name="gz::sim::systems::ApplyJointForce">
+        <joint_name>right_hip_yaw_joint</joint_name>
+      </plugin>
+      <plugin filename="ignition-gazebo-apply-joint-force-system" name="gz::sim::systems::ApplyJointForce">
+        <joint_name>right_hip_pitch_joint</joint_name>
+      </plugin>
+      <plugin filename="ignition-gazebo-apply-joint-force-system" name="gz::sim::systems::ApplyJointForce">
+        <joint_name>right_hip_roll_joint</joint_name>
+      </plugin>
+      <plugin filename="ignition-gazebo-apply-joint-force-system" name="gz::sim::systems::ApplyJointForce">
+        <joint_name>right_knee_joint</joint_name>
+      </plugin>
+      <plugin filename="ignition-gazebo-apply-joint-force-system" name="gz::sim::systems::ApplyJointForce">
+        <joint_name>right_ankle_pitch_joint</joint_name>
+      </plugin>
+      <plugin filename="ignition-gazebo-apply-joint-force-system" name="gz::sim::systems::ApplyJointForce">
+        <joint_name>right_ankle_roll_joint</joint_name>
+      </plugin>
+
+      <!-- Torso Force Controller -->
+      <plugin filename="ignition-gazebo-apply-joint-force-system" name="gz::sim::systems::ApplyJointForce">
+        <joint_name>torso_joint</joint_name>
+      </plugin>
+
+      <!-- Left Arm Force Controllers -->
+      <plugin filename="ignition-gazebo-apply-joint-force-system" name="gz::sim::systems::ApplyJointForce">
+        <joint_name>left_shoulder_pitch_joint</joint_name>
+      </plugin>
+      <plugin filename="ignition-gazebo-apply-joint-force-system" name="gz::sim::systems::ApplyJointForce">
+        <joint_name>left_shoulder_roll_joint</joint_name>
+      </plugin>
+      <plugin filename="ignition-gazebo-apply-joint-force-system" name="gz::sim::systems::ApplyJointForce">
+        <joint_name>left_shoulder_yaw_joint</joint_name>
+      </plugin>
+      <plugin filename="ignition-gazebo-apply-joint-force-system" name="gz::sim::systems::ApplyJointForce">
+        <joint_name>left_elbow_joint</joint_name>
+      </plugin>
+      <plugin filename="ignition-gazebo-apply-joint-force-system" name="gz::sim::systems::ApplyJointForce">
+        <joint_name>left_wrist_roll_joint</joint_name>
+      </plugin>
+      <plugin filename="ignition-gazebo-apply-joint-force-system" name="gz::sim::systems::ApplyJointForce">
+        <joint_name>left_wrist_pitch_joint</joint_name>
+      </plugin>
+      <plugin filename="ignition-gazebo-apply-joint-force-system" name="gz::sim::systems::ApplyJointForce">
+        <joint_name>left_wrist_yaw_joint</joint_name>
+      </plugin>
+
+
+      <!-- Right Arm Force Controllers -->
+      <plugin filename="ignition-gazebo-apply-joint-force-system" name="gz::sim::systems::ApplyJointForce">
+        <joint_name>right_shoulder_pitch_joint</joint_name>
+      </plugin>
+      <plugin filename="ignition-gazebo-apply-joint-force-system" name="gz::sim::systems::ApplyJointForce">
+        <joint_name>right_shoulder_roll_joint</joint_name>
+      </plugin>
+      <plugin filename="ignition-gazebo-apply-joint-force-system" name="gz::sim::systems::ApplyJointForce">
+        <joint_name>right_shoulder_yaw_joint</joint_name>
+      </plugin>
+      <plugin filename="ignition-gazebo-apply-joint-force-system" name="gz::sim::systems::ApplyJointForce">
+        <joint_name>right_elbow_joint</joint_name>
+      </plugin>
+      <plugin filename="ignition-gazebo-apply-joint-force-system" name="gz::sim::systems::ApplyJointForce">
+        <joint_name>right_wrist_roll_joint</joint_name>
+      </plugin>
+      <plugin filename="ignition-gazebo-apply-joint-force-system" name="gz::sim::systems::ApplyJointForce">
+        <joint_name>right_wrist_pitch_joint</joint_name>
+      </plugin>
+      <plugin filename="ignition-gazebo-apply-joint-force-system" name="gz::sim::systems::ApplyJointForce">
+        <joint_name>right_wrist_yaw_joint</joint_name>
+      </plugin>
+
+      <plugin
+        name="ignition::gazebo::systems::OdometryPublisher"
+        filename="libignition-gazebo-odometry-publisher-system.so">
+
+        <odom_frame>odom</odom_frame>       
+        <child_frame>pelvis</child_frame> 
+
+        <publish_rate>50</publish_rate>     <!-- Defaults to 20 Hz -->
+        <enable_twist>true</enable_twist>
+        <enable_pose>true</enable_pose>
+      </plugin>
+      </model>
+  </world>
+</sdf>
