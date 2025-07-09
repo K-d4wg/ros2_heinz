@@ -98,17 +98,14 @@
         <static_update_frequency>1</static_update_frequency>
       </plugin>
 
-       <!-- plugin for odometry -->
       <plugin
         name="ignition::gazebo::systems::OdometryPublisher"
         filename="libignition-gazebo-odometry-publisher-system.so">
-
-      <odom_frame>odom</odom_frame>       
-      <child_frame>base</child_frame> 
-
-      <publish_rate>20</publish_rate>
-      <enable_twist>true</enable_twist>
-      <enable_pose>true</enable_pose>
+        <odom_frame>odom</odom_frame>       
+        <child_frame>base</child_frame> 
+        <publish_rate>20</publish_rate>
+        <enable_twist>true</enable_twist>
+        <enable_pose>true</enable_pose>
       </plugin>
       
 

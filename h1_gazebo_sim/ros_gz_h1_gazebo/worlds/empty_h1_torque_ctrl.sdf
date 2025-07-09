@@ -76,8 +76,7 @@
 
 
     <model name="h1_ign">
-      <!--<static>true</static>-->
-      <!--<self_collide>true</self_collide>-->
+      <self_collide>true</self_collide>
       <pose>0 0 1.04 0 0 0</pose>
       <include merge="true">
         <uri>package://ros_gz_h1_description/models/h1_ign</uri>
@@ -196,7 +195,7 @@
         <odom_frame>odom</odom_frame>       
         <child_frame>pelvis</child_frame> 
 
-        <publish_rate>50</publish_rate>     <!-- Defaults to 20 Hz -->
+        <publish_rate>50</publish_rate>
         <enable_twist>true</enable_twist>
         <enable_pose>true</enable_pose>
       </plugin>

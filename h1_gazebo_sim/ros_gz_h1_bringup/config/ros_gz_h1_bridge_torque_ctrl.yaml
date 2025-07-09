@@ -25,7 +25,7 @@
   gz_type_name: "gz.msgs.Pose_V"
   direction: GZ_TO_ROS  
 - gz_topic_name: /model/h1_ign/odometry
-  ros_topic_name: /h1_ign/odometry
+  ros_topic_name: /h1/odometry
   gz_type_name: ignition.msgs.Odometry
   ros_type_name: nav_msgs/msg/Odometry
   direction: GZ_TO_ROS
