@@ -23,7 +23,7 @@
         </inertia>
       </inertial>
       <collision name='pelvis_collision'>
-        <pose>0 0 0 0 0 0</pose>
+        <pose>0 0 -0.05 0 0 0</pose>
         <geometry>
           <sphere>
             <radius>0.050000000000000003</radius>
@@ -737,10 +737,10 @@
         </inertia>
       </inertial>
       <collision name='torso_link_collision'>
-        <pose>0 0 0.14999999999999999 0 0 0</pose>
+        <pose>0 0 0.24999999999999999 0 0 0</pose>
         <geometry>
           <box>
-            <size>0.080000000000000002 0.16 0.10000000000000001</size>
+            <size>0.135 0.21 0.45</size>
           </box>
         </geometry>
       </collision>
@@ -857,15 +857,14 @@
           <izz>0.00061773299999999998</izz>
         </inertia>
       </inertial>
-      <collision name='left_shoulder_roll_link_collision'>
+      <!--<collision name='left_shoulder_roll_link_collision'>
         <pose>0 0 0 0 0 0</pose>
         <geometry>
-          <mesh>
-            <scale>1 1 1</scale>
-            <uri>meshes/left_shoulder_roll_link.STL</uri>
-          </mesh>
+          <box>
+            <size>0.05 0.05 0.25</size>
+          </box>
         </geometry>
-      </collision>
+      </collision>-->
       <visual name='left_shoulder_roll_link_visual'>
         <pose>0 0 0 0 0 0</pose>
         <geometry>
@@ -915,9 +914,10 @@
       <collision name='left_shoulder_yaw_link_collision'>
         <pose>0 0 0 0 0 0</pose>
         <geometry>
-          <box>
-            <size>0.04 0.04 0.20</size>
-          </box>
+          <cylinder>
+            <length>0.225</length>
+            <radius>0.02</radius>
+          </cylinder>
         </geometry>
       </collision>
       <visual name='left_shoulder_yaw_link_visual'>
@@ -966,14 +966,14 @@
           <izz>0.00089789899999999996</izz>
         </inertia>
       </inertial>
-      <collision name='left_elbow_link_collision'>
+      <!--<collision name='left_elbow_link_collision'>
         <pose>0 0 0 0 0 0</pose>
         <geometry>
           <box>
             <size>0.05 0.05 0.25</size>
           </box>
         </geometry>
-      </collision>
+      </collision>-->
       <visual name='left_elbow_link_visual'>
         <pose>0 0 0 0 0 0</pose>
         <geometry>
@@ -1021,11 +1021,12 @@
         </inertia>
       </inertial>
       <collision name='left_wrist_roll_link_collision'>
-        <pose>0 0 0 0 0 0</pose>
+        <pose>0 0 0 0 1.57079632679 0</pose>
         <geometry>
-          <box>
-            <size>0.25 0.03 0.03</size>
-          </box>
+          <cylinder>
+            <length>0.225</length>
+            <radius>0.02</radius>
+          </cylinder>
         </geometry>
       </collision>
       <visual name='left_wrist_roll_link_visual'>
@@ -1075,11 +1076,11 @@
         </inertia>
       </inertial>
       <collision name='left_wrist_pitch_link_collision'>
-        <pose>0 0 0 0 0 0</pose>
+        <pose>0.06 0 0 0 0 0</pose>
         <geometry>
-          <box>
-            <size>0.05 0.05 0.25</size>
-          </box>
+          <sphere>
+            <radius>0.03</radius>
+          </sphere>
         </geometry>
       </collision>
       <visual name='left_wrist_pitch_link_visual'>
@@ -1228,14 +1229,14 @@
           <izz>0.00061773299999999998</izz>
         </inertia>
       </inertial>
-      <collision name='right_shoulder_roll_link_collision'>
+      <!--<collision name='right_shoulder_roll_link_collision'>
         <pose>0 0 0 0 0 0</pose>
         <geometry>
           <box>
             <size>0.05 0.05 0.25</size>
           </box>
         </geometry>
-      </collision>
+      </collision>-->
       <visual name='right_shoulder_roll_link_visual'>
         <pose>0 0 0 0 0 0</pose>
         <geometry>
@@ -1285,10 +1286,10 @@
       <collision name='right_shoulder_yaw_link_collision'>
         <pose>0 0 0 0 0 0</pose>
         <geometry>
-          <mesh>
-            <scale>1 1 1</scale>
-            <uri>meshes/right_shoulder_yaw_link.STL</uri>
-          </mesh>
+          <cylinder>
+            <length>0.225</length>
+            <radius>0.02</radius>
+          </cylinder>
         </geometry>
       </collision>
       <visual name='right_shoulder_yaw_link_visual'>
@@ -1337,14 +1338,14 @@
           <izz>0.00089789899999999996</izz>
         </inertia>
       </inertial>
-      <collision name='right_elbow_link_collision'>
+      <!--<collision name='right_elbow_link_collision'>
         <pose>0 0 0 0 0 0</pose>
         <geometry>
           <box>
             <size>0.05 0.05 0.25</size>
           </box>
         </geometry>
-      </collision>
+      </collision>-->
       <visual name='right_elbow_link_visual'>
         <pose>0 0 0 0 0 0</pose>
         <geometry>
@@ -1392,11 +1393,12 @@
         </inertia>
       </inertial>
       <collision name='right_wrist_roll_link_collision'>
-        <pose>0 0 0 0 0 0</pose>
+        <pose>0 0 0 0 1.57079632679 0</pose>
         <geometry>
-          <box>
-            <size>0.25 0.03 0.03</size>
-          </box>
+          <cylinder>
+            <length>0.225</length>
+            <radius>0.02</radius>
+          </cylinder>
         </geometry>
       </collision>
       <visual name='right_wrist_roll_link_visual'>
@@ -1446,11 +1448,11 @@
         </inertia>
       </inertial>
       <collision name='right_wrist_pitch_link_collision'>
-        <pose>0 0 0 0 0 0</pose>
+        <pose>0.06 0 0 0 0 0</pose>
         <geometry>
-          <box>
-            <size>0.05 0.05 0.25</size>
-          </box>
+          <sphere>
+            <radius>0.03</radius>
+          </sphere>
         </geometry>
       </collision>
       <visual name='right_wrist_pitch_link_visual'>
