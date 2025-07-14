@@ -191,14 +191,11 @@
       <plugin
         name="ignition::gazebo::systems::OdometryPublisher"
         filename="libignition-gazebo-odometry-publisher-system.so">
-
         <odom_frame>odom</odom_frame>       
-        <child_frame>pelvis</child_frame> 
-
-        <publish_rate>50</publish_rate>
-        <enable_twist>true</enable_twist>
-        <enable_pose>true</enable_pose>
+        <robot_base_frame>pelvis</robot_base_frame>
+        <odom_publish_frequency>50</odom_publish_frequency>
       </plugin>
+      
       </model>
   </world>
 </sdf>
