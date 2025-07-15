@@ -33,3 +33,5 @@ Installation:
 - in /ros2_ws/src
 - git clone this repository
 - build the packages using colcon 
+
+![Demo](https://i.imgur.com/haNCFTJ.gif)
