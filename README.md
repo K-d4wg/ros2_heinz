@@ -34,4 +34,4 @@ Installation:
 - git clone this repository
 - build the packages using colcon 
 
-![Demo](https://i.imgur.com/haNCFTJ.gif)
+![Alt Text](https://media3.giphy.com/media/v1.Y2lkPTc5MGI3NjExeHJteHFyc2NuOTcxY3N4amk2aWh6dnRucHo0emFlMGM0M2trOWc4NiZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/N2HGf1zrWOn8Hs787f/giphy.gif)
