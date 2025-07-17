@@ -17,7 +17,7 @@ The robot will be standing upright and after unpausing the simulation, you can s
 ### Torque Control
 To launch the H1 Simulation in Torque Control Mode use:
 ```bash
-ros2 launch ros_gz_h1_bringup h1_gazebo_sim_torque_control.launch.py
+ros2 launch ros_gz_h1_bringup h1_gazebo_sim_torque_ctrl.launch.py
 ```
 
 The robot will collapse in on itself upon start since no torques are applied to keep it upright. To control the robot, use the ROS2 topics:

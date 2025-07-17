@@ -24,10 +24,10 @@ def generate_launch_description():
     pkg_project_description = get_package_share_directory('ros_gz_h1_description')
     pkg_ros_gz_sim = get_package_share_directory('ros_gz_sim')
 
-    # Load the SDF file from "description" package                    
-    sdf_file  =  os.path.join(pkg_project_description, 'models', 'h1_ign', 'model.sdf')
-    with open(sdf_file, 'r') as infp:
-        robot_desc = infp.read()
+    # Load the URDF instead of SDF, since the robot state publisher works better with URDF
+    urdf_file = os.path.join(pkg_project_description, 'models/h1_ign', 'h1_2_handless.urdf')
+    with open(urdf_file, 'r') as infp:
+        urdf_description = infp.read()
 
     # Setup to launch the simulator and Gazebo world
     gz_sim = IncludeLaunchDescription(
@@ -51,7 +51,7 @@ def generate_launch_description():
         output='both',
         parameters=[
             {'use_sim_time': True},
-            {'robot_description': robot_desc}
+            {'robot_description': urdf_description}
         ]
     )    
 
@@ -66,12 +66,21 @@ def generate_launch_description():
         output='screen'
     )
 
+    # Visualize in RViz
+    rviz = Node(
+       package='rviz2',
+       executable='rviz2',
+       arguments=['-d', os.path.join(pkg_project_bringup, 'config', 'check_joints_gz.rviz')],
+       condition=IfCondition(LaunchConfiguration('rviz'))
+    )
+
     return LaunchDescription([
         set_gpu_env,
         set_glx_env,
         gz_sim,
         DeclareLaunchArgument('rviz', default_value='true',
-                              description='Open RViz (not).'), 
+                              description='Open RViz.'), 
         bridge,
         robot_state_publisher,
+        rviz
     ])
