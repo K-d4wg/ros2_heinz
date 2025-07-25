@@ -9,6 +9,11 @@
       </engine>
     </plugin>
 
+    <!--<plugin use this plugin if contact forces are important
+      filename="ignition-gazebo-physics-system"
+      name="ignition::gazebo::systems::Physics">
+    </plugin>-->
+
     <plugin
       filename="ignition-gazebo-sensors-system"
       name="ignition::gazebo::systems::Sensors">

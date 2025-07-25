@@ -372,6 +372,11 @@
           </mesh>
         </geometry>
       </collision>
+      <sensor name="contact_sensor_left" type="contact">
+        <contact>
+            <collision>left_ankle_roll_link_collision</collision>
+        </contact>
+      </sensor>
       <visual name='left_ankle_roll_link_visual'>
         <pose>0 0 0 0 0 0</pose>
         <geometry>
@@ -714,6 +719,11 @@
           </mesh>
         </geometry>
       </collision>
+      <sensor name="contact_sensor_right" type="contact">
+        <contact>
+            <collision>right_ankle_roll_link_collision</collision>
+        </contact>
+      </sensor>
       <visual name='right_ankle_roll_link_visual'>
         <pose>0 0 0 0 0 0</pose>
         <geometry>
