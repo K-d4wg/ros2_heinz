@@ -348,6 +348,16 @@
           <spring_stiffness>0</spring_stiffness>
         </dynamics>
       </axis>
+      <sensor name="force_torque_sensor" type="force_torque">
+        <always_on>true</always_on>
+        <update_rate>50</update_rate>
+        <visualize>true</visualize>
+        <topic>left_ankle_joint/force_torque</topic>
+        <force_torque>
+          <frame>sensor</frame>
+          <measure_direction>parent_to_child</measure_direction>
+        </force_torque>
+      </sensor>  
     </joint>
     <link name='left_ankle_roll_link'>
       <pose relative_to='left_ankle_roll_joint'>0 0 0 0 0 0</pose>
@@ -695,6 +705,17 @@
           <spring_stiffness>0</spring_stiffness>
         </dynamics>
       </axis>
+
+      <sensor name="force_torque_sensor" type="force_torque">
+        <always_on>true</always_on>
+        <update_rate>50</update_rate>
+        <visualize>true</visualize>
+        <topic>right_ankle_joint/force_torque</topic>
+        <force_torque>
+          <frame>sensor</frame>
+          <measure_direction>parent_to_child</measure_direction>
+        </force_torque>
+      </sensor>
     </joint>
     <link name='right_ankle_roll_link'>
       <pose relative_to='right_ankle_roll_joint'>0 0 0 0 0 0</pose>

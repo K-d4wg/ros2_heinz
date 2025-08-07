@@ -15,6 +15,11 @@
     </plugin>-->
 
     <plugin
+      filename="ignition-gazebo-forcetorque-system"
+      name="ignition::gazebo::systems::ForceTorque">
+    </plugin>
+  
+    <plugin
       filename="ignition-gazebo-sensors-system"
       name="ignition::gazebo::systems::Sensors">
       <render_engine>ogre2</render_engine>

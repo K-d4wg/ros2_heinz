@@ -164,13 +164,23 @@
   ros_type_name: "std_msgs/msg/Float64"
   gz_type_name: "gz.msgs.Double"
   direction: ROS_TO_GZ
-- ros_topic_name: "/h1/left_contact_force"
+- ros_topic_name: "/h1/left_contact_points"
   gz_topic_name: "/world/demo/model/h1_ign/link/left_ankle_roll_link/sensor/contact_sensor_left/contact"
   ros_type_name: "ros_gz_interfaces/msg/Contacts"
   gz_type_name: "gz.msgs.Contacts"
   direction: GZ_TO_ROS  
-- ros_topic_name: "/h1/right_contact_force"
+- ros_topic_name: "/h1/right_contact_points"
   gz_topic_name: "/world/demo/model/h1_ign/link/right_ankle_roll_link/sensor/contact_sensor_right/contact"
   ros_type_name: "ros_gz_interfaces/msg/Contacts"
   gz_type_name: "gz.msgs.Contacts"
   direction: GZ_TO_ROS  
+- ros_topic_name: "/h1/left_ankle_joint/force_torque"
+  gz_topic_name: "/left_ankle_joint/force_torque"
+  ros_type_name: "geometry_msgs/msg/Wrench"
+  gz_type_name: "gz.msgs.Wrench"
+  direction: GZ_TO_ROS
+- ros_topic_name: "/h1/right_ankle_joint/force_torque"
+  gz_topic_name: "/right_ankle_joint/force_torque"
+  ros_type_name: "geometry_msgs/msg/Wrench"
+  gz_type_name: "gz.msgs.Wrench"
+  direction: GZ_TO_ROS
