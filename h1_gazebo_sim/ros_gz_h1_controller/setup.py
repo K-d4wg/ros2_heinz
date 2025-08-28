@@ -21,6 +21,7 @@ setup(
     entry_points={
         'console_scripts': [    
             'example = ros_gz_h1_controller.example:main',
+            'example_matrix_pose = ros_gz_h1_controller.example_matrix_pose:main',
             ],
     },
 )
